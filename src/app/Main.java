@@ -24,7 +24,7 @@ public class Main {
         String result = "";
 
         for (int i : numbers) {
-            result += i + " ";
+            result += i + ", ";
         }
 
         System.out.println(result);
