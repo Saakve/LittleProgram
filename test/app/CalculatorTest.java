@@ -29,7 +29,7 @@ public class CalculatorTest {
     @Test
     public void startIsGreaterThenEnd() {
         int[] actual = Calculator.numbersBetween(7, 2);
-        int[] expected = {6, 5, 4, 3};
+        int[] expected = {6, 4};
 
         assertArrayEquals(expected, actual);
     }
@@ -37,7 +37,7 @@ public class CalculatorTest {
     @Test
     public void endIsGreaterThenStart() {
         int[] actual = Calculator.numbersBetween(-5, 5);
-        int[] expected = {-4, -3, -2, -1, 0, 1, 2, 3, 4};
+        int[] expected = {-4, -2, 0, 2 , 4};
 
         assertArrayEquals(expected, actual);
     }

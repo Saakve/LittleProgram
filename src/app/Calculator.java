@@ -1,15 +1,17 @@
 package app;
 
+import java.util.ArrayList;
+
 /**
- * Provides a method to generate an array of numbers between two integers.
+ * Provides a method to generate an array of event numbers between two integers.
  *
  * @author Avelino
  */
 public class Calculator {
 
     /**
-     * Generates an array of numbers between the given start and end integers
-     * (exclusive).
+     * Generates an array of even numbers between the given start and end
+     * integers (exclusive).
      *
      * @param start starting integer (exclusive)
      * @param end ending integer (exclusive)
@@ -20,19 +22,28 @@ public class Calculator {
             return new int[0];
         }
 
-        int amount = Math.abs(start - end) - 1;
-        int[] numbers = new int[amount];
+        ArrayList<Integer> evenNumbers = new ArrayList<Integer>();
 
         if (start > end) {
-            for (int i = 0; i < amount; i++) {
-                numbers[i] = --start;
+            for (int i = start - 1; i > end; i--) {
+                if (i % 2 == 0) {
+                    evenNumbers.add(i);
+                }
             }
         } else {
-            for (int i = 0; i < amount; i++) {
-                numbers[i] = ++start;
+            for (int i = start + 1; i < end; i++) {
+                if (i % 2 == 0) {
+                    evenNumbers.add(i);
+                }
             }
         }
 
-        return numbers;
+        int[] evenNumbersArray = new int[evenNumbers.size()];
+
+        for (int i = 0; i < evenNumbersArray.length; i++) {
+            evenNumbersArray[i] = evenNumbers.get(i);
+        }
+
+        return evenNumbersArray;
     }
 }
