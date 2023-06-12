@@ -1,16 +1,14 @@
 package app;
 
-import java.util.ArrayList;
-
 /**
- * Provides a method to generate an array of event numbers between two integers.
+ * Provides a method to generate an array of odd numbers between two integers.
  *
  * @author Avelino
  */
 public class Calculator {
 
     /**
-     * Generates an array of even numbers between the given start and end
+     * Generates an array of odd numbers between the given start and end
      * integers (exclusive).
      *
      * @param start starting integer (exclusive)
@@ -22,28 +20,41 @@ public class Calculator {
             return new int[0];
         }
 
-        ArrayList<Integer> evenNumbers = new ArrayList<Integer>();
+        int amountAllNumbers = Math.abs(start - end) - 1;
+        int[] allNumbers = new int[amountAllNumbers];
 
         if (start > end) {
-            for (int i = start - 1; i > end; i--) {
-                if (i % 2 == 0) {
-                    evenNumbers.add(i);
-                }
+            for (int i = 0; i < amountAllNumbers; i++) {
+                allNumbers[i] = --start;
             }
         } else {
-            for (int i = start + 1; i < end; i++) {
-                if (i % 2 == 0) {
-                    evenNumbers.add(i);
-                }
+            for (int i = 0; i < amountAllNumbers; i++) {
+                allNumbers[i] = ++start;
             }
         }
 
-        int[] evenNumbersArray = new int[evenNumbers.size()];
-
-        for (int i = 0; i < evenNumbersArray.length; i++) {
-            evenNumbersArray[i] = evenNumbers.get(i);
+        int amountOddNumbers = 0;
+        for (int i = 0; i < amountAllNumbers; i++) {
+            if (allNumbers[i] % 2 != 0) {
+                amountOddNumbers++;
+                continue;
+            }
+            allNumbers[i] = 0;
         }
 
-        return evenNumbersArray;
+        int[] oddNumbers = new int[amountOddNumbers];
+
+        int i = 0;
+        int j = 0;
+
+        while (amountOddNumbers != 0 && i < amountAllNumbers) {
+            if (allNumbers[i] != 0) {
+                oddNumbers[j] = allNumbers[i];
+                j++;
+            }
+            i++;
+        }
+
+        return oddNumbers;
     }
 }
