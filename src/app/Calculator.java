@@ -1,15 +1,15 @@
 package app;
 
 /**
- * Provides a method to generate an array of numbers between two integers.
+ * Provides a method to generate an array of odd numbers between two integers.
  *
  * @author Avelino
  */
 public class Calculator {
 
     /**
-     * Generates an array of numbers between the given start and end integers
-     * (exclusive).
+     * Generates an array of odd numbers between the given start and end
+     * integers (exclusive).
      *
      * @param start starting integer (exclusive)
      * @param end ending integer (exclusive)
@@ -20,19 +20,41 @@ public class Calculator {
             return new int[0];
         }
 
-        int amount = Math.abs(start - end) - 1;
-        int[] numbers = new int[amount];
+        int amountAllNumbers = Math.abs(start - end) - 1;
+        int[] allNumbers = new int[amountAllNumbers];
 
         if (start > end) {
-            for (int i = 0; i < amount; i++) {
-                numbers[i] = --start;
+            for (int i = 0; i < amountAllNumbers; i++) {
+                allNumbers[i] = --start;
             }
         } else {
-            for (int i = 0; i < amount; i++) {
-                numbers[i] = ++start;
+            for (int i = 0; i < amountAllNumbers; i++) {
+                allNumbers[i] = ++start;
             }
         }
 
-        return numbers;
+        int amountOddNumbers = 0;
+        for (int i = 0; i < amountAllNumbers; i++) {
+            if (allNumbers[i] % 2 != 0) {
+                amountOddNumbers++;
+                continue;
+            }
+            allNumbers[i] = 0;
+        }
+
+        int[] oddNumbers = new int[amountOddNumbers];
+
+        int i = 0;
+        int j = 0;
+
+        while (amountOddNumbers != 0 && i < amountAllNumbers) {
+            if (allNumbers[i] != 0) {
+                oddNumbers[j] = allNumbers[i];
+                j++;
+            }
+            i++;
+        }
+
+        return oddNumbers;
     }
 }
